@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import { useSelector, useDispatch } from 'react-redux'
 import Lists from './lists'
@@ -67,6 +67,7 @@ function RepeatedColumns() {
     }, [dispatch])
     return (
         <RepeatedColumnsStyled>
+                <h4><strong>¿Qué Columnas se repiten?</strong></h4>
                 <Search />
                 <Lists columns={columnsList} />
         </RepeatedColumnsStyled>

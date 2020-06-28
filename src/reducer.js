@@ -4,6 +4,15 @@ export default function reducer(state, action) {
         case 'SET_COLUMNS': {
             return { ...state, columns: action.payload }
         }
+        case 'SET_COLUMNS_SORT':{
+            return { ...state, columnsSort: action.payload}
+        }
+        case "SET_SELECTED_LIST": {
+            return { ...state, listSort: action.payload}
+        }
+        case "SET_REMOVE_LIST": {
+            return { ...state, listSort: action.payload}
+        }
         case 'SET_SEARCH_BY_NAME': {
             let searchListByName = (state.columns || [])
                 .filter(columnsValue => columnsValue.toLowerCase().includes(action.payload.toLowerCase()))

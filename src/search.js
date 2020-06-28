@@ -40,7 +40,7 @@ function Search() {
         inputValue &&
         <i className="fas fa-times close" onClick={clearInput}></i>
       }
-      <Input placeholder="Search for a country..." value={inputValue} onChange={filterByName} />
+      <Input placeholder="Buscar columna" value={inputValue} onChange={filterByName} />
     </SearchStyled>
   )
 }

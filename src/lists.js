@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useSelector, useDispatch } from 'react-redux';
 
 const ListsStyled = styled.label`
 //   display: inline-flex;
@@ -44,6 +45,11 @@ const ListsStyled = styled.label`
 
 function Lists
     ({ columns }) {
+    const dispatch = useDispatch()
+    const listSort =useSelector((state)=> {
+        return state.listSort;
+    })
+
     window.onmousedown = function (e) {
         let el = e.target;
         if (el.tagName.toLowerCase() === 'option' && el.parentNode.hasAttribute('multiple')) {
@@ -51,16 +57,32 @@ function Lists
             if (el.hasAttribute('selected')) {
                 el.removeAttribute('selected');
                 el.innerHTML =  (el.innerHTML).substring(1)
+                handlerRemove(e)
             }
             else {
                 el.setAttribute('selected', '');
                 // el.insertAdjacentHTML('afterbegin', "&#xf00c;");
                 el.innerHTML = "&#xf00c; "+el.innerHTML;
+                handlerAdd(e)
             }
     
             let select = el.parentNode.cloneNode(true);
             el.parentNode.parentNode.replaceChild(select, el.parentNode);
         }
+    }
+    const handlerAdd = (e) =>{
+        console.log(e);
+        dispatch({
+          type: 'SET_SELECTED_LIST',
+          payload: [...listSort, e.target.value]
+        })
+    }
+    const handlerRemove = (e) =>{
+        console.log(e);
+        dispatch({
+          type: 'SET_REMOVE_LIST',
+          payload: [e.target.value]
+        })
     }
     return (
         <ListsStyled>
