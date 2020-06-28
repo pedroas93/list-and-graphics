@@ -1,3 +1,12 @@
+body{
+  font-family: 'Nunito Sans', sans-serif;
+}
+
+:root {
+  --black: #111517;
+  --white: white;
+  --background: #fafafa;
+}
 .App {
   text-align: center;
 }
