@@ -9,6 +9,7 @@ import Button from './button'
 const SortColumnsStyled = styled.div`
     display:grid;
     grid-row-gap:0.8em;
+    background: var(--backgroundHowOrder);
     justify-content: center;
     padding: 4em 2em;
     border: 1px solid red;

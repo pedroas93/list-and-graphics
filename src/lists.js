@@ -20,6 +20,7 @@ const ListsStyled = styled.label`
         font-size: 1em;
         border-radius: 5px;
         padding: 1em ;
+        background: var(--backgroundHowOrder);
 
     }
     select option:not(:checked), select option:not(:checked) {
@@ -27,8 +28,8 @@ const ListsStyled = styled.label`
     }  
     select option:checked
     {
-        background: linear-gradient(rgb(240, 242, 255),rgb(240, 242, 255));
-        background-color: rgb(240, 242, 255) !important; /* for IE */
+        background: linear-gradient(rgb(251, 252, 255),rgb(251, 252, 255));
+        background-color: rgb(251, 252, 255) !important; /* for IE */
         border-radius: 5px;
         margin-bottom: 1%;
         font-family: 'FontAwesome', sans-serif;

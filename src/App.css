@@ -5,7 +5,8 @@ body{
 :root {
   --black: #111517;
   --white: white;
-  --background: #fafafa;
+  --background: rgb(251, 252, 255);
+  --backgroundHowOrder: rgb(239, 241, 254);
 }
 .App {
   text-align: center;

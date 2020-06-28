@@ -13,6 +13,7 @@ const SearchStyled = styled.div`
     border-radius: 50%;
     border: none;
     box-shadow: 0 2px 9px 0 rgba(0,0,0,.05);
+
   }
 `
 

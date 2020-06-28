@@ -1,48 +1,45 @@
 import React from 'react'
 import styled from 'styled-components'
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 
 const SortSelectedStyled = styled.div`
     // width: 264px;
     text-align: left;
     border-radius: 5px;
     overflow:hidden;
-    // box-shadow: 0 0 7px 2px rgba(0,0,0,.03);
     .sortSelected{
-        display: flex;
         padding:1.5em;
         align-items: center;
     }
-    i {
-        margin: 0;
-        padding-right: 4px;
+    .fas fa-sort-alpha-down-alt{
+        align-items
     }
-    p{
+    .sortName{
         margin: 0;
-        padding-right: 167px;
     }
-    div{
-        display: flex;
+    .sortComponent{
+        // display: flex !important;
+        display: grid;
+        grid-template-columns: 8% 80% 10% 10%;
     }
 
 `
 function SortSelected({ }) {
 
-    const columnsSelected =useSelector((state)=> {
+    const columnsSelected = useSelector((state) => {
         return state.listSort;
     })
-    console.log("ENTER HERE????",columnsSelected )
     return (
         <SortSelectedStyled>
             <div className="sortSelected">
                 {
-                    columnsSelected.map((element)=>{
-                        return(
-                            <div key={element}>
+                    columnsSelected.map((element) => {
+                        return (
+                            <div className="sortComponent" key={element}>
                                 <i className="fas fa-credit-card" ></i>
                                 <p className="sortName" key={element} >{element}</p>
-                                <i className="fas fa-sort-alpha-down-alt"></i>
                                 <i className="fas fa-sort-alpha-down"></i>
+                                <i className="fas fa-sort-alpha-down-alt"></i>
                             </div>
                         )
                     })
