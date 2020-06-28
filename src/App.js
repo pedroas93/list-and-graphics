@@ -6,9 +6,7 @@ import reducer from './reducer';
 import RepeatedColumns from './repeated-columns';
 const initialState = {
   columns: [],
-  countryListByName: [],
-  countryFilteredByRegion: [],
-  filterByRegion: '',
+  searchListByName: [],
 }
 
 const store = createStore(reducer, initialState)

@@ -18,7 +18,7 @@ const ListsStyled = styled.label`
         line-height: 48px;
         font-size: 1em;
         border-radius: 5px;
-        padding: 1em 1em 1em 1em;
+        padding: 1em ;
 
     }
     select option:not(:checked), select option:not(:checked) {
@@ -28,10 +28,10 @@ const ListsStyled = styled.label`
     {
         background: linear-gradient(rgb(240, 242, 255),rgb(240, 242, 255));
         background-color: rgb(240, 242, 255) !important; /* for IE */
-        border-radius: 10px;
+        border-radius: 5px;
         margin-bottom: 1%;
         font-family: 'FontAwesome', sans-serif;
-        font-color: rgb(117, 117, 143)!important;
+        color: rgb(117, 117, 143)!important;
     }
     option {
         font-weight: normal;
@@ -44,12 +44,9 @@ const ListsStyled = styled.label`
 
 function Lists
     ({ columns }) {
-    console.log('WHAT ARE COLUMNS?', columns)
     window.onmousedown = function (e) {
-        e.preventDefault();
         let el = e.target;
         if (el.tagName.toLowerCase() === 'option' && el.parentNode.hasAttribute('multiple')) {
-            e.preventDefault();
     
             if (el.hasAttribute('selected')) {
                 el.removeAttribute('selected');
@@ -57,7 +54,8 @@ function Lists
             }
             else {
                 el.setAttribute('selected', '');
-                el.insertAdjacentHTML('afterbegin', "&#xf00c;");
+                // el.insertAdjacentHTML('afterbegin', "&#xf00c;");
+                el.innerHTML = "&#xf00c; "+el.innerHTML;
             }
     
             let select = el.parentNode.cloneNode(true);

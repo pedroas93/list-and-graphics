@@ -2,11 +2,12 @@ import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { useSelector, useDispatch } from 'react-redux'
 import Lists from './lists'
+import Search from './search'
 
 
 const RepeatedColumnsStyled = styled.div`
     display:grid;
-    grid-row-gap:2.3em;
+    grid-row-gap:0.8em;
     background: var(--background);
     justify-content: center;
     padding: 4em 2em;
@@ -16,29 +17,23 @@ const RepeatedColumnsStyled = styled.div`
 function RepeatedColumns() {
 
     const dispatch = useDispatch()
-    const columns = useSelector((state) => {
-        return state.columns;
+    // const columns = useSelector((state) => {
+    //     return state.columns;
+    // })
+    const searchListByName =useSelector((state)=> {
+        return state.searchListByName;
     })
 
-    // const selectedItem = (e) => {
-    //     setColumns(e.target.value)
-    //     dispatch({
-    //         type: 'SET_SELECTED_VALUE',
-    //         payload: e.target.value
-    //     })
-    // }
-
-    // const dispatch = useDispatch()
-    // const countryListByName = useSelector((state) => state.countryListByName)
-
-    // const countryList = useSelector((state) => {
-    //     if ('' !== state.filterByRegion) {
-    //         return state.countryFilteredByRegion;
-    //     }
-    //     if (countryListByName.length > 0) {
-    //         return countryListByName
-    //     }
-
+    const columnsList = useSelector((state) => {
+        
+        if (searchListByName.length > 0) {
+            return searchListByName
+        }
+        if (searchListByName === "Null") {
+            return "Null"
+        }
+        return state.columns;
+    })
 
     //     return state.countryList;
     // })
@@ -65,7 +60,6 @@ function RepeatedColumns() {
         //                 payload: list
         //             })
         //             // setCountryList(data)
-        //             console.log(list.length)
         //         })
         //         .catch(() => {
         //             console.log("ERROR")
@@ -73,9 +67,8 @@ function RepeatedColumns() {
     }, [dispatch])
     return (
         <RepeatedColumnsStyled>
-            {
-                <Lists columns={columns} />
-            }
+                <Search />
+                <Lists columns={columnsList} />
         </RepeatedColumnsStyled>
     )
 }
