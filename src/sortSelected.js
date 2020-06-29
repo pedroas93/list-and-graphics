@@ -1,9 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
 import { useSelector } from 'react-redux'
+import Container from './container'
+import { DndProvider } from 'react-dnd'
+import { HTML5Backend } from 'react-dnd-html5-backend'
 
 const SortSelectedStyled = styled.div`
-    // width: 264px;
     text-align: left;
     border-radius: 5px;
     overflow:hidden;
@@ -20,32 +22,28 @@ const SortSelectedStyled = styled.div`
     .sortComponent{
         // display: flex !important;
         display: grid;
-        grid-template-columns: 8% 80% 10% 10%;
+        grid-template-columns: 8% 70% 10% 10%;
     }
 
 `
-function SortSelected({ }) {
+function SortSelected() {
 
     const columnsSelected = useSelector((state) => {
-        return state.listSort;
+        let newElement = [];
+        if(state.listSort.length !== 0){
+            state.listSort.forEach((element,index) => {
+                newElement= [...newElement, {id: index  ,text: element}]
+            });
+        }
+        return newElement;
     })
+    console.log('WHAT IS columnsSelected?????--->', columnsSelected)
     return (
         <SortSelectedStyled>
-            <div className="sortSelected">
-                {
-                    columnsSelected.map((element) => {
-                        return (
-                            <div className="sortComponent" key={element}>
-                                <i className="fas fa-credit-card" ></i>
-                                <p className="sortName" key={element} >{element}</p>
-                                <i className="fas fa-sort-alpha-down"></i>
-                                <i className="fas fa-sort-alpha-down-alt"></i>
-                            </div>
-                        )
-                    })
-                }
-            </div>
 
+            <DndProvider backend={HTML5Backend}>
+                <Container columnsSelected={columnsSelected} />
+            </DndProvider>
         </SortSelectedStyled>
     )
 }

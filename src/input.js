@@ -10,8 +10,6 @@ const InputStyled = styled.label`
   background: var(--backgroundHowOrder);
   flex: 1;
   input {
-    /* width: 100%; */
-    // flex: 1;
     background: var(--backgroundHowOrder);
     border: none;
     height: 48px;

@@ -3,13 +3,6 @@ import styled from 'styled-components';
 import { useSelector, useDispatch } from 'react-redux';
 
 const ListsStyled = styled.label`
-//   display: inline-flex;
-//   background: white;
-//   align-items: center;
-//   box-shadow: 0 2px 9px 0 rgba(0,0,0,.05);
-//   padding: 0 2rem;
-//   flex: 1;
-
   select
    {
         width: 350px; 
@@ -45,45 +38,50 @@ const ListsStyled = styled.label`
 `
 
 function Lists
-    ({ columns }) {
-    const dispatch = useDispatch()
-    const listSort =useSelector((state)=> {
+    ({ columns, sorteable }) {
+    const listSort = useSelector((state) => {
         return state.listSort;
     })
+    const dispatch = useDispatch()
 
     window.onmousedown = function (e) {
         let el = e.target;
         if (el.tagName.toLowerCase() === 'option' && el.parentNode.hasAttribute('multiple')) {
-    
+
             if (el.hasAttribute('selected')) {
                 el.removeAttribute('selected');
-                el.innerHTML =  (el.innerHTML).substring(1)
+                el.innerHTML = (el.innerHTML).substring(1)
                 handlerRemove(e)
             }
             else {
                 el.setAttribute('selected', '');
-                // el.insertAdjacentHTML('afterbegin', "&#xf00c;");
-                el.innerHTML = "&#xf00c; "+el.innerHTML;
+                el.innerHTML = "&#xf00c; " + el.innerHTML;
+                console.log("WHAT IS SORTEABLE????-->", sorteable)
                 handlerAdd(e)
             }
-    
+
             let select = el.parentNode.cloneNode(true);
             el.parentNode.parentNode.replaceChild(select, el.parentNode);
         }
     }
-    const handlerAdd = (e) =>{
+    const handlerAdd = (e) => {
         console.log(e);
-        dispatch({
-          type: 'SET_SELECTED_LIST',
-          payload: [...listSort, e.target.value]
-        })
+        console.log('what is sorteable??', sorteable)
+        if (sorteable) {
+            dispatch({
+                type: sorteable,
+                payload: [...listSort, e.target.value]
+            })
+        }
     }
-    const handlerRemove = (e) =>{
+    const handlerRemove = (e) => {
         console.log(e);
-        dispatch({
-          type: 'SET_REMOVE_LIST',
-          payload: [e.target.value]
-        })
+        if (sorteable) {
+            dispatch({
+                type: sorteable,
+                payload: [e.target.value]
+            })
+        }
     }
     return (
         <ListsStyled>

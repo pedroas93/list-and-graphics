@@ -1,35 +1,48 @@
-import React from 'react';
+import React, { useState }from 'react';
 import styled from 'styled-components';
+import ModalPrint from './modalPrint';
 
 const ButtonStyled = styled.label`
-//   display: inline-flex;
-//   background: white;
-//   align-items: center;
-//   box-shadow: 0 2px 9px 0 rgba(0,0,0,.05);
-//   padding: 0 1rem;
-//   border-radius: 5px;
-//   flex: 1;
-
   Button {
-    /* width: 100%; */
-    // flex: 1;
-    // border: none;
-    // height: 48px;
-    // line-height: 48px;
-    // font-size: .9em;
-    // outline: 0;
-    // &::-webkit-Button-placeholder {
-    //   color: #C4C4C4;
-    // }
+    font-size: 15px;
+    font-weight: bold;
+  }
+  .ok{
+    background-color: rgb(69, 115, 249);
+    color:rgb(254, 255, 255);
+    border: none;
+    height: 35px;
+    border-radius: 3px;
+    width: 10%;
+  }
+  .cancelar{
+    background-color: rgb(254, 255, 255);
+    color: rgb(69, 115, 249);
+    height: 38px;
+    border-radius: 3px;
+    width: 100%;
+    border-width: 1px;
   }
 `
 
 function Button({ type }) {
-    return (
-        <ButtonStyled>
-            <button type="text" >{type}</button> 
-        </ButtonStyled>
-    )
+  const [modal, setModal] = useState(false)
+
+  const printModal = (e) =>{
+    setModal(true);
+  }
+  const handleCloseModal = (e) =>{
+    setModal(false);
+  }
+  return (
+    <ButtonStyled>
+      <button className={type} onClick={printModal}>{type}</button>
+      <ModalPrint
+          openModal={modal}
+          handleCloseModal={handleCloseModal}
+      />
+    </ButtonStyled>
+  )
 }
 
 export default Button

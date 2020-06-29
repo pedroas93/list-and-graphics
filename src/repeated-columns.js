@@ -11,7 +11,6 @@ const RepeatedColumnsStyled = styled.div`
     background: var(--background);
     justify-content: center;
     padding: 4em 2em;
-    border: 1px solid red;
 `
 
 function RepeatedColumns() {
@@ -21,11 +20,13 @@ function RepeatedColumns() {
     //     return state.columns;
     // })
     const searchListByName =useSelector((state)=> {
-        return state.searchListByName;
+        return state.searchListByNameRepeat;
     })
 
     const columnsList = useSelector((state) => {
-        
+        if(!searchListByName){
+            return state.columns;
+        }
         if (searchListByName.length > 0) {
             return searchListByName
         }
@@ -50,26 +51,12 @@ function RepeatedColumns() {
             type: 'SET_COLUMNS',
             payload: columns
         })
-        //     fetch('https://restcountries.eu/rest/v2/all')
-        //         .then((response) => {
-        //             return response.json()
-        //         })
-        //         .then((list) => {
-        //             dispatch({
-        //                 type: 'SET_COUNTRY_LIST',
-        //                 payload: list
-        //             })
-        //             // setCountryList(data)
-        //         })
-        //         .catch(() => {
-        //             console.log("ERROR")
-        //         })
     }, [dispatch])
     return (
         <RepeatedColumnsStyled>
                 <h4><strong>¿Qué Columnas se repiten?</strong></h4>
-                <Search />
-                <Lists columns={columnsList} />
+                <Search actions={"SET_SEARCH_BY_NAME_REPEAT"} />
+                <Lists columns={columnsList} sorteable={"SET_SELECTED_LIST"}/>
         </RepeatedColumnsStyled>
     )
 }

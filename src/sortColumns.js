@@ -12,21 +12,21 @@ const SortColumnsStyled = styled.div`
     background: var(--backgroundHowOrder);
     justify-content: center;
     padding: 4em 2em;
-    border: 1px solid red;
+    .Buttons{
+        display: grid;
+        grid-template-columns: 20% 130%;
+    }
 `
 
 function SortColumns() {
 
     const dispatch = useDispatch()
-    // const columns = useSelector((state) => {
-    //     return state.columns;
-    // })
-    const searchListByName =useSelector((state)=> {
-        return state.searchListByName;
+    const searchListByName = useSelector((state) => {
+        return state.searchListByNameSort;
     })
 
     const columnsList = useSelector((state) => {
-        
+
         if (searchListByName.length > 0) {
             return searchListByName
         }
@@ -36,8 +36,9 @@ function SortColumns() {
         return state.columnsSort;
     })
 
-    //     return state.countryList;
-    // })
+    // handlerOk = (e) =>{
+        
+    // }
     useEffect(() => {
         const columns = [
             'SKT_ID',
@@ -54,12 +55,14 @@ function SortColumns() {
     }, [dispatch])
     return (
         <SortColumnsStyled>
-                <h4><strong>¿Cómo  quíeres ordenarlos?</strong></h4>
-                <SortSelected/>
-                <Search />
-                <Lists columns={columnsList}/>
-                <Button type={"calcel"}/>
-                <Button type={"ok"}/>
+            <h4><strong>¿Cómo  quíeres ordenarlos?</strong></h4>
+            <SortSelected />
+            <Search actions={"SET_SEARCH_BY_NAME_SORT"} />
+            <Lists columns={columnsList} sorteable={"SET_SELECTED_LIST_SORT"} />
+            <div className="Buttons">
+                <Button type={"cancelar"}/>
+                <Button type={"ok"} />
+            </div>
         </SortColumnsStyled>
     )
 }

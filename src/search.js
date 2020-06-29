@@ -17,20 +17,20 @@ const SearchStyled = styled.div`
   }
 `
 
-function Search() {
+function Search({actions}) {
   const [inputValue, setInputValue] = useState('')
   const dispatch = useDispatch()
 
   const filterByName = (e) => {
     setInputValue(e.target.value)
     dispatch({
-      type: 'SET_SEARCH_BY_NAME',
+      type: actions,
       payload: e.target.value
     })
   }
   const clearInput = () => {
     dispatch({
-      type: 'SET_SEARCH_BY_NAME',
+      type: actions,
       payload: ''
     })
     setInputValue('')
