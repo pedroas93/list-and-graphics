@@ -16,14 +16,13 @@ const RepeatedColumnsStyled = styled.div`
 function RepeatedColumns() {
 
     const dispatch = useDispatch()
-    // const columns = useSelector((state) => {
-    //     return state.columns;
-    // })
+
     const searchListByName =useSelector((state)=> {
         return state.searchListByNameRepeat;
     })
 
     const columnsList = useSelector((state) => {
+
         if(!searchListByName){
             return state.columns;
         }
@@ -36,8 +35,6 @@ function RepeatedColumns() {
         return state.columns;
     })
 
-    //     return state.countryList;
-    // })
     useEffect(() => {
         const columns = [
             'Columna SKT_ID',

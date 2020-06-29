@@ -56,7 +56,7 @@ function Lists
             else {
                 el.setAttribute('selected', '');
                 el.innerHTML = "&#xf00c; " + el.innerHTML;
-                console.log("WHAT IS SORTEABLE????-->", sorteable)
+                // console.log("WHAT IS SORTEABLE????-->", sorteable)
                 handlerAdd(e)
             }
 
@@ -65,8 +65,6 @@ function Lists
         }
     }
     const handlerAdd = (e) => {
-        console.log(e);
-        console.log('what is sorteable??', sorteable)
         if (sorteable) {
             dispatch({
                 type: sorteable,
@@ -75,7 +73,6 @@ function Lists
         }
     }
     const handlerRemove = (e) => {
-        console.log(e);
         if (sorteable) {
             dispatch({
                 type: sorteable,

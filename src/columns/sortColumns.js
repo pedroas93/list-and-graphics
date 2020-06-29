@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import Lists from './lists'
 import Search from './search'
 import SortSelected from './sortSelected'
-import Button from './button'
+import Button from '../utils/button'
 
 const SortColumnsStyled = styled.div`
     display:grid;

@@ -1,6 +1,6 @@
 import React, { useState }from 'react';
 import styled from 'styled-components';
-import ModalPrint from './modalPrint';
+import ModalPrint from '../columns/modalPrint';
 
 const ButtonStyled = styled.label`
   Button {

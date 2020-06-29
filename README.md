@@ -1,5 +1,53 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+1. Ajustar codigo:
+
+const ul = document.querySelector('ul')
+
+function setColumn (column) {
+  return new Promise(resolve => {
+  	ul.innerHTML += `<li>${column}<li>`
+    setTimeout(resolve, Math.random() * 1000)
+    });
+}
+
+
+
+const columns = [
+  'Columna SKT_ID',
+  'Columna Amount',
+  'Columna Getway',
+  'Columna Date',
+  'Columna Issuer',
+  'Columna User_id']
+
+async function showColumns() {
+  for(let col = 0; col < columns.length; col++){
+    await setColumn(columns[col]);
+  }
+}
+
+showColumns()
+
+## 4. Cuestionario
+1. ¿Porque no debería usar la libreria JQuery, si estoy usando ReactJS?
+R= Porque Jquery modifica directamente el DOM, este problema persiste con cualquier libreria que modifique el DOM directamente como vanilla, mientras React mantiene una version virtual DOM y luego la monta al DOM real.
+
+2. ¿Porque usarias Hooks de las nuevas versiones de ReactJS, en lugar de class component?
+R= en primer lugar las clases confunden a los desarrolladores, porque las clases siguen siendo funciones en React, por otro lado el lenguaje de maquina transpila mejor el codigo de funciones que de clases, tambien se debe tener en cuenta la re-utilización de los componenetes, con funciones se mantiene la filosofia de atomicidad.
+
+3. ¿Que es un archivo JSX?
+R=es la sintaxis usada por react.
+
+4. ¿Que diferencia hay entre una function y una arrow function de Javascript?
+R=un arrow function es una funcion affi, esto significa que es una funcion de procesamiento directo, es decir se ejecutan al declararlas, las funciones normales se ejecutan al llamarlas.
+
+5. ¿Que es Redux y cómo nos ayuda en los proyectos?
+R= Redux es una arquitectura que ayuda a gestionar los estados de la aplicación, redux es transversal a la aplicación.
+
+6. ¿Que nos permite hacer la siguiente declaración?
+R= permite enviar dos parametros y sumarlos, solo cuando el primero exista.
+
 ## Available Scripts
 
 In the project directory, you can run:
