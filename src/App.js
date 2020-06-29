@@ -31,6 +31,7 @@ const initialState = {
   listSort: [],
   list: [],
   searchListSortByName: [],
+  lessSort: ["null"],
 
 }
 

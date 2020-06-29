@@ -37,7 +37,6 @@ function SortSelected() {
         }
         return newElement;
     })
-    console.log('WHAT IS columnsSelected?????--->', columnsSelected)
     return (
         <SortSelectedStyled>
 

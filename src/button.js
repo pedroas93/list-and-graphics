@@ -29,7 +29,9 @@ function Button({ type }) {
   const [modal, setModal] = useState(false)
 
   const printModal = (e) =>{
-    setModal(true);
+    if(type === "ok"){
+      setModal(true);
+    }
   }
   const handleCloseModal = (e) =>{
     setModal(false);

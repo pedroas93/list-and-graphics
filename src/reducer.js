@@ -1,5 +1,5 @@
 export default function reducer(state, action) {
-    console.log(action)
+    // console.log(action)
     switch (action.type) {
         case 'SET_CLEAR_COLUMNS': {
             return { ...state, columns: [] }
@@ -19,8 +19,14 @@ export default function reducer(state, action) {
         case "SET_SELECTED_LIST": {
             return { ...state, list: action.payload}
         }
+        case "SET_LESS_SORT": {
+            return { ...state, lessSort: action.payload}
+        }
         case "SET_REMOVE_LIST": {
             return { ...state, list: action.payload}
+        }
+        case "SET_SORT_LIST": {
+            return { ...state,  list: action.payload}
         }
         case "SET_SELECTED_LIST_SORT": {
             return { ...state, listSort: action.payload}

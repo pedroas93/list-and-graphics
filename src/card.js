@@ -1,6 +1,8 @@
 import React, { useRef } from "react";
 import { useDrag, useDrop } from "react-dnd";
 import styled from 'styled-components'
+import { useSelector, useDispatch } from 'react-redux';
+
 
 // import { ItemTypes } from "./ItemTypes";
 const CardStyled = styled.div`
@@ -27,7 +29,16 @@ const ItemTypes = {
     CARD: 'card',
 }
 export const Card = ({ id, text, index, moveCard }) => {
+
+    const dispatch = useDispatch()
+
     const ref = useRef(null);
+    const list = useSelector((state) => {
+        return state.listSort;
+    })
+    const lessSort = useSelector((state) => {
+        return state.lessSort;
+    })
     const [, drop] = useDrop({
         accept: ItemTypes.CARD,
         hover(item, monitor) {
@@ -43,6 +54,31 @@ export const Card = ({ id, text, index, moveCard }) => {
             item.index = hoverIndex;
         }
     });
+    const handleClickSort = (e) => {
+        let sortList = list;
+        if (sortList.length > 0) {
+            if (lessSort[0] === "less" || lessSort[0] === "null") {
+                sortList.sort()
+                dispatch({
+                    type: "SET_SORT_LIST",
+                    payload: [...sortList.reverse()]
+                })
+                dispatch({
+                    type: "SET_LESS_SORT",
+                    payload: ["harder"]
+                })
+            } else {
+                dispatch({
+                    type: "SET_SORT_LIST",
+                    payload: [...sortList.sort()]
+                })
+                dispatch({
+                    type: "SET_LESS_SORT",
+                    payload: ["less"]
+                })
+            }
+        }
+    }
     const [{ isDraging }, drag] = useDrag({
         item: { type: ItemTypes.CARD, id, index },
         collect: monitor => ({
@@ -56,8 +92,10 @@ export const Card = ({ id, text, index, moveCard }) => {
                 <div className="sortComponent" >
                     <i className="fas fa-credit-card" ></i>
                     <p className="sortName" >{text}</p>
-                    <i className="fas fa-sort-alpha-down"></i>
-                    <i className="fas fa-sort-alpha-down-alt"></i>
+                    <a href="#" onClick={handleClickSort}>
+                        <i className="fas fa-sort-alpha-down" />
+                    </a>
+                    <i className="fas fa-sort-alpha-down-alt" />
                 </div>
             </div>
         </CardStyled>
