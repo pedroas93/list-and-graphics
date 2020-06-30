@@ -5,7 +5,7 @@ import { createStore } from 'redux';
 import reducer from './reducer';
 import RepeatedColumns from './columns/repeated-columns';
 import SortColumns from './columns/sortColumns';
-import Graphics from './graphics/graphics';
+import Cake from './graphics/cake';
 import Line from './graphics/line';
 import Script from './script'
 import styled from 'styled-components';
@@ -53,7 +53,7 @@ function App() {
             <SortColumns />
           </div>
           <div className="graphics">
-            <Graphics />
+            <Cake />
           </div>
           <div className="line">
             <Line />

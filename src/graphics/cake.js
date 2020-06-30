@@ -2,11 +2,11 @@ import React from 'react'
 import styled from 'styled-components'
 import ReactApexChart from 'react-apexcharts'
 
-const GraphicsStyled = styled.div`
+const CakeStyled = styled.div`
 
 `
 
-class Graphics extends React.Component {
+class Cake extends React.Component {
     constructor(props) {
         super(props);
 
@@ -51,4 +51,4 @@ class Graphics extends React.Component {
     }
 }
 
-export default Graphics
+export default Cake
