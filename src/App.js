@@ -19,11 +19,13 @@ const AppStyled = styled.div`
                           "graphics line"
   }
 
-  @media screen and (max-width: 500px){
-    .grid-container{
+  @media screen and (max-width: 768px){
+    .App{
       gird-template-columns: 50%;
       grid-template-areas: "repeat"
                             "sort"
+                            "graphics"
+                            "line"
     }
   }
 `
@@ -57,9 +59,6 @@ function App() {
           </div>
           <div className="line">
             <Line />
-          </div>
-          <div>
-            <Script/>
           </div>
         </section>
       </Provider>
