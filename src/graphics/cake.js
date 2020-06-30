@@ -6,49 +6,38 @@ const CakeStyled = styled.div`
 
 `
 
-class Cake extends React.Component {
-    constructor(props) {
-        super(props);
+function Cake() {
 
-        this.state = {
 
-            series: [16162169, 2746585, 5372273],
-            options: {
-                chart: {
-                    width: 380,
-                    type: 'pie',
+    const series= [16162169, 2746585, 5372273]
+    const options= {
+        chart: {
+            width: 380,
+                type: 'pie',
                 },
-                labels: ['APPROVED', 'PENDING', 'REJECTED'],
-                responsive: [{
-                    breakpoint: 480,
-                    options: {
-                        chart: {
-                            width: 200
-                        },
-                        legend: {
-                            position: 'bottom'
-                        }
+        labels: ['APPROVED', 'PENDING', 'REJECTED'],
+            responsive: [{
+                breakpoint: 480,
+                options: {
+                    chart: {
+                        width: 200
+                    },
+                    legend: {
+                        position: 'bottom'
                     }
-                }]
-            },
-
-
-        };
+                }
+            }]
     }
 
+    return (
 
 
-    render() {
-        return (
+        <div id="chart">
+            <ReactApexChart options={options} series={series} type="pie" width={380} />
+        </div>
 
 
-            <div id="chart">
-                <ReactApexChart options={this.state.options} series={this.state.series} type="pie" width={380} />
-            </div>
-
-
-        );
-    }
+    );
 }
 
 export default Cake
