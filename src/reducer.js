@@ -1,15 +1,6 @@
 export default function reducer(state, action) {
-    // console.log(action)
+    console.log(action)
     switch (action.type) {
-        case 'SET_CLEAR_COLUMNS': {
-            return { ...state, columns: [] }
-        }
-        case 'SET_CLEAR_COLUMNS_SORT': {
-            return { ...state, columnsSort: [] }
-        }
-        case 'SET_CLEAR_SELECTED_LIST': {
-            return { ...state, list: [] }
-        }
         case 'SET_COLUMNS': {
             return { ...state, columns: action.payload }
         }
@@ -29,11 +20,19 @@ export default function reducer(state, action) {
             return { ...state,  list: action.payload}
         }
         case "SET_SELECTED_LIST_SORT": {
-            return { ...state, listSort: action.payload}
+            console.log(' state.listSort???', state.listSort )
+
+            if(state.listSort.includes( action.payload[action.payload.length-1] ) ){
+                let listSort = state.listSort.filter(list => !list.includes(action.payload)); 
+                console.log('WHAT IS LISTSORT???', listSort, "state.listSort[0]", state.listSort[0], "action.payload[action.payload.length-1]", action.payload[action.payload.length-1] )
+                return { ...state, listSort}
+            }else{
+                return { ...state, listSort: action.payload}
+            }
         }
         case 'SET_SEARCH_BY_NAME_REPEAT': {
             let searchListByNameRepeat = (state.columns || [])
-                .filter(columnsValue => columnsValue.toLowerCase().includes(action.payload.toLowerCase()))
+                .filter( columnsValue => columnsValue.toLowerCase().includes(action.payload.toLowerCase()))
             if (searchListByNameRepeat.length === 0) {
                 searchListByNameRepeat = ["No hay resultados"]
             }

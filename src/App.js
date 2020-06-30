@@ -7,14 +7,13 @@ import RepeatedColumns from './columns/repeated-columns';
 import SortColumns from './columns/sortColumns';
 import Cake from './graphics/cake';
 import Line from './graphics/line';
-import Script from './script'
 import styled from 'styled-components';
 
 
 const AppStyled = styled.div`
   .App {
     display: grid;
-    gird-template-columns: 40% 50%;
+    gird-template-columns: 50% 50%;
     grid-template-areas: "repeat sort"
                           "graphics line"
   }
